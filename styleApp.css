@@ -1,0 +1,128 @@
+:root {
+    --primary-color: rgb(45, 45, 202);
+    --color-segundario: antiquewhite;
+    --color-terciario: rgb(255, 128, 0);
+    --header-size: 4rem;
+    --font: 1.8rem;
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+}
+
+.invisible {
+    display: none;
+}
+
+h1 {
+    font-size: 1.2rem;
+    margin: 2.5%;
+}
+
+h2 {
+    font-size: 0.8rem;
+}
+
+h4 {
+    font-size: 0.5rem;
+}
+
+header {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 15vh;
+    background-color: var(--primary-color);
+    justify-content: space-between;
+}
+
+.dropdown {
+    margin-bottom: 1%;
+    padding: 2% 1% 2% 1%;
+
+}
+
+.input-group {
+    display: flex;
+    width: 75%;
+
+}
+
+#back-arrow-btn {
+    color: black;
+    /* font-size: 3; */
+    width: 15%;
+    background-color: var(--color-segundario);
+}
+
+.input-group .btn {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-terciario);
+}
+
+
+main {
+    width: 90%;
+    padding: 3%;
+    background-color: var(--color-segundario);
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.6rem;
+    border: 5px solid gray;
+}
+
+.main-conteiner-a {
+    /* bloque del top Rated */
+    display: flex;
+    width: 85%;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+
+}
+
+.main-conteiner-a img {
+    width: 100;
+    object-fit: cover;
+    scroll-snap-align: center;
+}
+
+main article {
+    /*  */
+    width: 85%;
+    background-color: var(--color-segundario);
+    border: 2px solid var(--primary-color)
+}
+
+.movie-img {
+    height: 50%;
+}
+
+/* VISTAS DEL MOVIE DETAIL */
+
+#relationed_movies_principalDiv {
+    display: flex;
+
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=FOOOTERRRRR */
+footer {
+    margin-top: 10vh;
+    width: 100%;
+    height: 20vh;
+    background-color: var(--primary-color);
+}
