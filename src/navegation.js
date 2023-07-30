@@ -2,6 +2,7 @@ showMoreTRENDINGSbtn.addEventListener('click', () => {
     location.hash = '#search=trends'
 });
 
+
 searchBTN.addEventListener('click', () => {
     location.hash = `#search=${searchImput.value}`
     console.log(location.hash)
@@ -41,6 +42,7 @@ function trendsPage() {
     movieDetailMAIN.classList.add('invisible');
     relationedSectionConteiner.classList.add('invisible');
     goToHomeBTN.classList.remove('invisible');
+
 };
 function searchPage() {
     console.log('Estas en Search')
@@ -50,6 +52,7 @@ function searchPage() {
     relationedSectionConteiner.classList.add('invisible')
     trendsMAIN.classList.add('invisible');
     goToHomeBTN.classList.remove('invisible');
+
 
     getSearchResults();
 };
@@ -61,6 +64,7 @@ function movieDetail() {
     relationedSectionConteiner.classList.remove('invisible')
     trendsMAIN.classList.add('invisible');
     goToHomeBTN.classList.remove('invisible');
+
     getMovieDetail();
 };
 
@@ -73,4 +77,5 @@ function homePage() {
     movieDetailMAIN.classList.add('invisible');
     relationedSectionConteiner.classList.add('invisible')
     trendsMAIN.classList.add('invisible');
+
 }

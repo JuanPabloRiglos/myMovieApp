@@ -6,6 +6,7 @@ const trendsMAIN = document.getElementById('trends-Main');
 const showMoreTRENDINGSbtn = document.getElementById('showMore-Trendin-Btn');
 
 
+
 // Movie Details TAGS -> 
 const movieDetailMAIN = document.getElementById('movie-Detail-Main');
 const relationedSectionConteiner = document.getElementById('relationed_movies_conteiner')
