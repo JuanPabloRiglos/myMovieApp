@@ -1,3 +1,7 @@
+//HEADER
+
+const menuDesplegableUl = document.querySelector('.header__desplegable-options')
+
 // MAINS PRINCIPALES
 const homeMAIN = document.getElementById('main-Home');
 

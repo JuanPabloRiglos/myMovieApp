@@ -39,15 +39,68 @@ h4 {
     font-size: 0.5rem;
 }
 
+/* HEADER */
 header {
     display: flex;
-    align-items: end;
-    width: 100%;
-    height: 15vh;
-    background-color: var(--primary-color);
-    justify-content: space-between;
+    justify-content: center;
 }
 
+/*Botton category desplegable*/
+.header__conteiner__ButtonDesplegbable {
+    margin-top: 5%;
+    color: rgb(236, 233, 233);
+    background-color: rgb(150, 148, 148);
+    border-radius: 18px;
+}
+
+.header__deslplegable_btn {
+    color: rgb(236, 233, 233);
+    background-color: rgb(123, 120, 120);
+    padding: 5px 10px 5px;
+    border-radius: 18px;
+    border: 2px solid rgb(110, 110, 110);
+}
+
+.header__desplegable-options {
+    /*ul*/
+    display: none;
+    width: 100%;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+
+.header__desplegable-options li {
+    /* background-color: rgb(236, 233, 233); */
+    width: 100%;
+    text-decoration: none;
+    list-style: none;
+    display: grid;
+    justify-content: center;
+}
+
+.header__desplegable-options li a {
+    text-decoration: none;
+    color: rgb(236, 233, 233);
+    ;
+
+}
+
+.header__desplegable-options li:hover {
+    background-color: rgb(123, 120, 120);
+    width: 100%;
+    margin: 1px;
+    /* border-radius: 18px; */
+    text-decoration: none;
+}
+
+.header__conteiner__ButtonDesplegbable:hover .header__desplegable-options {
+    display: block;
+}
+
+/* 
 .dropdown {
     margin-bottom: 1%;
     padding: 2% 1% 2% 1%;
@@ -58,23 +111,23 @@ header {
     display: flex;
     width: 75%;
 
-}
+} */
 
-#back-arrow-btn {
+/* #back-arrow-btn {
     color: black;
-    /* font-size: 3; */
+    font-size: 3; 
     width: 15%;
     background-color: var(--color-segundario);
-}
+} */
 
-.input-group .btn {
+/* .input-group .btn {
     position: relative;
     z-index: 2;
     background-color: var(--color-terciario);
-}
+} */
 
 
-main {
+/* main {
     width: 90%;
     padding: 3%;
     background-color: var(--color-segundario);
@@ -84,29 +137,29 @@ main {
     align-items: center;
     font-size: 1.6rem;
     border: 5px solid gray;
-}
+} */
 
-.main-conteiner-a {
-    /* bloque del top Rated */
+/* .main-conteiner-a {
+     bloque del top Rated 
     display: flex;
     width: 85%;
     overflow: scroll;
     scroll-snap-type: x mandatory;
 
-}
+} */
 
-.main-conteiner-a img {
+/* .main-conteiner-a img {
     width: 100;
     object-fit: cover;
     scroll-snap-align: center;
-}
+} */
 
-main article {
-    /*  */
+/* main article {
+    
     width: 85%;
     background-color: var(--color-segundario);
     border: 2px solid var(--primary-color)
-}
+} */
 
 .movie-img {
     height: 50%;
@@ -114,10 +167,10 @@ main article {
 
 /* VISTAS DEL MOVIE DETAIL */
 
-#relationed_movies_principalDiv {
+/* #relationed_movies_principalDiv {
     display: flex;
 
-}
+} */
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=FOOOTERRRRR */
 footer {
@@ -126,3 +179,39 @@ footer {
     height: 20vh;
     background-color: var(--primary-color);
 }
+
+/* ********************************* MEDIA QUERYS ***************************************/
+/* small */
+@media (min-width:480px) {}
+
+header {
+    display: flex;
+    align-items: baseline;
+    width: 90%;
+    height: auto;
+    background-color: var(--color-terciario);
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    margin: 2% 5% 2% 5%;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+/* large */
+@media (min-width:768px) {
+    header {
+        display: flex;
+        align-items: baseline;
+        width: 90%;
+        height: auto;
+        background-color: var(--color-segundario);
+        justify-content: flex-end;
+        flex-direction: column-reverse;
+        margin: 2% 5% 2% 5%;
+        border-radius: 9px;
+        padding: 20px;
+    }
+}
+
+/* extraLarge */
+@media (min-width:1024px) {}
