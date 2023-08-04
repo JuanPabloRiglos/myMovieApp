@@ -5,17 +5,21 @@
     <meta name="description" content="App desk basada en peliculas, como practica de consumo de API" >
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- google fonts astart -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,100;1,700&display=swap" rel="stylesheet"> 
+          <!-- google fonts ends-->
     <link rel="stylesheet" href="./styleApp.css">
     <title>MyMovieApp</title>
 </head>
 <body>
 <!--================================= HEADER =============================================-->
     <header>
-        <button id="go-home-btn" type="button" class="btn btn-outline-warning invisible">Go Home!</button>  <!--TODAVIA NO LO TRABAJE< BOTON VOLVER A PAGINA INICIO -->
+        <button id="go-home-btn"  class="invisible">Go Home!</button> 
         <div class="header__conteiner__ButtonDesplegbable">
 <!--btn btn-secondary dropdown-toggle-->
-            <button class="header__deslplegable_btn " type="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+            <button class="header__deslplegable_btn " type="button"> 
             Categories <img width="18" height="18" src="https://img.icons8.com/windows/32/plus.png" alt="plus"/>
             </button>
             <ul id="header__desplegable-options" class="header__desplegable-options">
@@ -24,15 +28,68 @@
             </ul>
     </div>
     <!--===============>>>>>> Search Imput -->
-    <div class="input-group mb-3">
+    <div class="header__serchConteiner_div">
         <button id="back-arrow-btn" >  🔙 </button>
-        <input id='search-imput' type="text" class="form-control" placeholder="Introduce Field To" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button id="search-Btn" for="search-imput" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        <input id='header__search-imput' name="search-imput" type="text" class="form-control" placeholder="Introduce Field To" >
+        <button id="header__search-Btn" for="header__search-imput" type="button" >Search</button>
     </div>
     <!--===============>>>>>> Search Imput Ends -->
-
+    
     </header>
-
+    <h1>MyMovieAPP</h1>
+<main>
+    <section class="main__content__Home">
+        <div class="home__div__silder_trendingPreview">
+            <article class="noImg">
+                <!-- home__article__silder_trendingPreview  CLASEDEL ARTICLE  -->
+            <!-- <img class="noImg" alt="cargandoimg"> -->
+        </article>
+        </div>
+        <button id="showMore-Trendin-Btn"> ShoW More Trending Week Movies! </button>
+        <!-- solo muestro el header y el trendin prevew ===> por ahora  -->
+    </section>
+    <section class="main__content__Trending invisible">
+        <h3> This are the <span>Trendins of the week !</span></h3>
+        <div class="trending_principal__Div_container noImg">
+            <article class="">
+                
+            </article>
+        </div>
+    </section>
+   <section class="main__content__Categories invisible">
+    <h3>these are the result by category</h3>
+    <div class="categories_principal__Div_container noImg">
+        <article class="">
+            
+        </article>
+    </section>
+   <section class="main__content__SearchResult">
+    
+    <div class="search_principal__Div_container noImg">
+        <article class="">
+            
+        </article>
+   </section>
+     <section class="main__content__MovieDetail invisible"> 
+        <!-- seccion con flex - direccion colum --> 
+        
+        <div class="movieDetail__content_selectedMovie">
+            <!-- seccion con grid dspues de los 480px -->
+            <img src="../pelicula.jpg" style=" width: 275px; height: 400px;">
+            <!-- del lado izquierdo lo de arriba -->
+            <div class="movieDetail__content_selectedMovie_Info"><h2> Title </h2>
+            <h3>subtitle</h3><p class="">calificacion : ⭐</p>
+        </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laboriosam obcaecati, reiciendis consectetur, in laborum delectus, voluptate aut nisi recusandae repellendus ratione a sint! Temporibus quo quas perferendis placeat ab.</p>
+        </div>
+        <!-- ===========================================================-->
+        <div class="movieDetail__content_AreaRelationedMovies invisible">
+             <h2>Recomend movies </h2>
+            <div class="movieDetail__content_relationedMovies invisible">
+    </div>
+        </div>
+     </section> 
+</main>
     <footer>algo</footer>
 </body>
 
