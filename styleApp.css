@@ -292,6 +292,8 @@ main {
 .particular__movie_img {
     border: 1px solid green;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.7);
+    max-width: 300px;
+    max-height: 400px;
 }
 
 /*========================== MOVIE DETAL = Relationed movies ========================*/
@@ -338,8 +340,16 @@ main {
 
 }
 
+.movieDetail__content_relationedMovies article {
+    max-width: 300px;
+    max-height: 400px;
+    /* a vEEEEERRRR SI Se Rom pe la matriskbnsjkbhsjl*/
+}
+
 .movieDetail__content_relationedMovies img {
     margin: 1%;
+    max-width: 300px;
+    max-height: 400px;
     overflow: hidden;
 }
 

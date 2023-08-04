@@ -48,7 +48,13 @@ async function getTrendintMovies() {
 
         trendingImg.classList.add('.img_slider');
         trendingImg.setAttribute('alt', 'movie.title');
-        trendingImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`)
+        trendingImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
+
+        trendingImg.addEventListener('error', () => {
+            trendingImg.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg');
+
+            // trendingImg.setAttribute('style', 'widht: 100px; heigth: 300px');
+        });// seteo imagen defoult
 
         // inyeccion de etiquetas
         articleTrendingConteiner.appendChild(trendingImg)
@@ -93,7 +99,13 @@ async function getMovieDetail() {
     movieDetailFirstDiv.classList.add('movieDetail__content_selectedMovie');
     const movieDetailIMG = document.createElement('img');
     movieDetailIMG.setAttribute('src', `https://image.tmdb.org/t/p/w300/${data.poster_path}`);
-    movieDetailIMG.setAttribute('alt', `Poster de la pelicual ${data.title}`)
+
+    movieDetailIMG.addEventListener('error', () => {
+        movieDetailIMG.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg');
+        movieDetailIMG.setAttribute('style', 'widht: 100px; heigth: 400px')
+    });
+
+    movieDetailIMG.setAttribute('alt', `Poster de la pelicual ${data.title}`);
     const movieDetailSecondDiv = document.createElement('div');
     movieDetailSecondDiv.classList.add('movieDetail__content_selectedMovie_Info');
     const movieTitle = document.createElement('h2');
@@ -130,6 +142,13 @@ async function getMovieDetail() {
             }) // agrego navegacion por hash al tocar el contenedor de la imagen
             const relationedMovieIMG = document.createElement('img');;
             relationedMovieIMG.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
+
+            relationedMovieIMG.addEventListener('error', () => {
+                relationedMovieIMG.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg')
+                relationedMovieIMG.setAttribute('style', 'widht: 100px; heigth: 400px')
+            });
+
+
             const relationedMovieTitle = document.createElement('h4');
             relationedMovieTitle.innerText = `${movie.title}`;
             //Inyeccion
@@ -191,7 +210,13 @@ async function getSearchResults() {
         const imgMovie = document.createElement('img');
         imgMovie.classList.add('particular__movie_article');
         imgMovie.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie[1].poster_path}`);
-        imgMovie.setAttribute('alt', `Poster de la pelicual ${movie[1].title}`)
+        imgMovie.setAttribute('alt', `Poster de la pelicual ${movie[1].title}`);
+
+        imgMovie.addEventListener('error', () => {
+            imgMovie.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg');
+            imgMovie.setAttribute('style', 'widht: 100px; heigth: 400px')
+        });
+
         const titleMovie = document.createElement('h5')
         titleMovie.innerText = `${movie[1].title}`
 
