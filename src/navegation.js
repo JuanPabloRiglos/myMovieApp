@@ -17,6 +17,7 @@ backBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', navegeitor, false);
 window.addEventListener('hashchange', navegeitor, false);
+window.addEventListener('scroll', getNewPageApi);
 
 function navegeitor() {
     console.log({ location });
