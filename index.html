@@ -5,118 +5,104 @@
     <meta name="description" content="App desk basada en peliculas, como practica de consumo de API" >
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!-- boostrap styleSheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- google fonts astart -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,100;1,700&display=swap" rel="stylesheet"> 
+          <!-- google fonts ends-->
     <link rel="stylesheet" href="./styleApp.css">
     <title>MyMovieApp</title>
 </head>
 <body>
 <!--================================= HEADER =============================================-->
     <header>
-        <button id="go-home-btn" type="button" class="btn btn-outline-warning invisible">Go Home!</button>
-        <div class="dropdown">
-
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Categories
+        <button id="go-home-btn"  class="invisible">Go Home!</button> 
+        <div class="header__conteiner__ButtonDesplegbable">
+<!--btn btn-secondary dropdown-toggle-->
+            <button class="header__deslplegable_btn " type="button"> 
+            Categories <img width="18" height="18" src="https://img.icons8.com/windows/32/plus.png" alt="plus"/>
             </button>
-            <ul class="dropdown-menu">
-            <!-- <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Terror</a></li> -->
+            <ul id="header__desplegable-options" class="header__desplegable-options">
+            <li class="desplegable__item"><a class="desplegable__item_ancor" href="#">Action</a></li>
+            <li class="desplegable__item"><a class="desplegable__item_ancor" href="#">Terror</a></li> 
             </ul>
     </div>
     <!--===============>>>>>> Search Imput -->
-    <div class="input-group mb-3">
+    <div class="header__serchConteiner_div">
         <button id="back-arrow-btn" >  🔙 </button>
-        <input id='search-imput' type="text" class="form-control" placeholder="Introduce Field To" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button id="search-Btn" for="search-imput" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        <input id='header__search-imput' name="search-imput" type="text" class="form-control" placeholder="Introduce Field To" >
+        <button id="header__search-Btn" for="header__search-imput" type="button" >Search</button>
     </div>
     <!--===============>>>>>> Search Imput Ends -->
-
+    
     </header>
-<!--=================================== HEAAADER ENDS=========================================-->
-    <h1>MyMovieApp</h1>
-    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-= MAIN PARA HOME =-=-=-=-=-=-=-=-= -->
-     <main id="main-Home">
-<!--================================  TRENDING ==============================================-->
-                <h2>Trendin Movies</h2>
-                <button id="showMore-Trendin-Btn" type="button" class="btn"> Show More!</button>
-                <!-- Empieza bloque de Boostrap Carrousel -->
-            <div id="carouselExampleFade" class="carousel slide carousel-fade">
-                <article class="carousel-inner">
-                    <!-- Ejemplo -->
-                <!-- <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>-->
-                </article>
-                <!-- botones en las imagenes  -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            <br>
-            <!-- Termina bloque de Boostrap Carrousel -->
-<!-- ============================== View TOP RATED MOVIE =====================================-->
-<h2>Top Rated movies</h2>
-        <div id="main-conteiner-a" class="main-conteiner-a">
-            <!-- <div>
-                <img class="movie-img" alt="Una foto de peliculas">
-                <h4>Titulo de la pelicula</h4>
-            </div> -->
-    </div>
-                <!-- LLegan muchas peliculas, hacer que vayan pasando --- TO DO! -->
-    </main>
-    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-= MAIN PARA DETALLE =-=-=-=-=-=-=-=-= -->
-    <main id="movie-Detail-Main" class="invisible">
-        <!-- Ejemplo -->
-        <!-- <div id="movie-detail-firstDiv" class="card movie-detail-firstDiv" style="width: 18rem;">
-            <img id="movie-detail-img" src="..." class="card-img-top movie-detail-img" alt="...">
-            <div class="card-body">
-            <h5 class="card-title ->-> NO ESTOY USANDO">Movie Title</h5>
-            CREE UN SPAN CON LA VALORACION-ESTRELLITA
-            CREE UN H2 CON EL SUBTITULO
-            <p class="card-text -> ni esta clase//  movie-detail-P-description" -> -> TAMPOCO ESTOY USANDO ESTA CLase> Movie description: alguna descripcion loca solo como ejemplo</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div> -->
-        
-    </main>
-    <section id="relationed_movies_conteiner"class="invisible">
-        <h2 id="relationed_movie-titleHH2" class="relationed_movie-titleHH2"></h2>
-    <div id="relationed_movies_principalDiv" >
-       <!-- <article class="relationed_movie_contein" ><div>
-            <img class="relationed_movie-img" alt="Una foto de peliculas"> 
-            <h4 class="relationed_movie-titleH4">Titulo de la pelicula</h4></div></article> -->
+    <h1>MyMovieAPP</h1>
+<main>
+    <section class="main__content__Home">
+        <div class="home__div__silder_trendingPreview">
+            <article class="noImg">
+                <!-- home__article__silder_trendingPreview  CLASEDEL ARTICLE  -->
+            <!-- <img class="noImg" alt="cargandoimg"> -->
+        </article>
+        </div>
+        <button id="showMore-Trendin-Btn"> ShoW More Trending Week Movies! </button>
+        <!-- solo muestro el header y el trendin prevew ===> por ahora  -->
+        <br>
+        <h2> Movies in Favorites Seccion </h2>
+        <div class="favorite_principal__Div_container noImg invisible">
+            <!-- comparte porpiedades css con pelicular relacionadas (dentro de movie detail view) -->
+            <!-- <article class="">
+                
+            </article> -->
+    </section>
+    <section class="main__content__Trending invisible">
+        <h3> This are the <span>Trendins of the week !</span></h3>
+        <div class="trending_principal__Div_container noImg">
+            <article class="">
+                
+            </article>
         </div>
     </section>
-    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-= MAIN PARA RESULTS =-=-=-=-=-=-=-=-= -->
-    <main id="serch-Results-Main" class="invisible">
-        <h2>Serch Results :</h2><!--
-<div class="" style="background-color: grey">
-<div> </div>
-</div> -->
-    </main>
-    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-= MAIN PARA TRENDS =-=-=-=-=-=-=-=-= -->
-    <main id="trends-Main" class="invisible">
-        <h2>This are the Trends :</h2>
-<!-- <div class="ratio ratio-4x3" style="background-color: gainsboro">
-<div>4x3</div> -->
-</div>
+   <section class="main__content__Categories invisible">
+    <h3>these are the result by category</h3>
+    <div class="categories_principal__Div_container noImg">
+        <article class="">
+            
+        </article>
+    </section>
+   <section class="main__content__SearchResult">
+    
+    <div class="search_principal__Div_container noImg">
+        <article class="">
+            
+        </article>
+   </section>
+     <section class="main__content__MovieDetail invisible"> 
+        <!-- seccion con flex - direccion colum --> 
+        
+        <div class="movieDetail__content_selectedMovie">
+            <!-- seccion con grid dspues de los 480px -->
+            <img src="../pelicula.jpg" style=" width: 275px; height: 400px;">
+            <!-- del lado izquierdo lo de arriba -->
+            <div class="movieDetail__content_selectedMovie_Info"><h2> Title </h2>
+            <h3>subtitle</h3><p class="">calificacion : ⭐</p>
+        </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laboriosam obcaecati, reiciendis consectetur, in laborum delectus, voluptate aut nisi recusandae repellendus ratione a sint! Temporibus quo quas perferendis placeat ab.</p>
+        </div>
+        <!-- ===========================================================-->
+        <div class="movieDetail__content_AreaRelationedMovies invisible">
+             <h2>Recomend movies </h2>
+            <div class="movieDetail__content_relationedMovies invisible">
+    </div>
+        </div>
+     </section> 
+</main>
+    <footer>algo</footer>
+</body>
 
-    </main>
-    <footer><p>Hecho con amor para el curso de Api de Platzi</p></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>   <!--  boostrap script -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/secrets.js"></script>
     <script src="./src/nodes.js" ></script>
     <script src="./src/main.js"></script>
     <script src="./src/navegation.js"></script>
-</body>
 </html>
