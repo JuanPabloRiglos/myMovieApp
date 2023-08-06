@@ -346,6 +346,7 @@ async function getSearchResults(params) {
         containerPrincipalDiv.classList.remove('noImg')
 
     });
+
 };
 
 function getFavoritesMovies() {

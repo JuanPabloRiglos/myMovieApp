@@ -5,6 +5,7 @@ showMoreTRENDINGSbtn.addEventListener('click', () => {
 
 searchBTN.addEventListener('click', () => {
     location.hash = `#search=${searchImput.value}`
+    location.reload();
     console.log(location.hash)
 });
 
