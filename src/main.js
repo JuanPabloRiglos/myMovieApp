@@ -7,6 +7,29 @@ const api = axios.create({
         'api_key': API_KEY,
     },
 });
+
+function likedMovieList() {
+    const item = JSON.parse(localStorage.getItem('liked-movies'));
+    let movies;
+
+    if (item) {
+        movies = item;
+    } else {
+        movies = {};
+    };
+    return movies;
+};
+function likedMovies(movie) {
+    const likedMovies = likedMovieList();
+    console.log(likedMovies)
+    if (likedMovies[movie.id]) {
+        likedMovies[movie.id] = undefined;
+    } else {
+        likedMovies[movie.id] = movie;
+    };
+    localStorage.setItem('liked-movies', JSON.stringify(likedMovies))
+};
+
 // UTILITY //
 // LAZYLOADER -> permite solo cargar imagenes de lo que aparezca en el viewport.
 const lazyloader = new IntersectionObserver((entries) => {
@@ -64,41 +87,56 @@ async function getNewPageApi() {
         movies = Object.entries(serchResults);
         getSearchResults(movies)
     }
-}
+};
 
+// INYECCIONES FOT THE VIEWPORT ---->
 // =====================================================  Trendin PREVIEW =====================================<<<
 async function getTrendintMovies() {
     const { data } = await api('trending/movie/week');
 
     const movies = data.results;
     const trendingDiv = document.querySelector('.home__div__silder_trendingPreview');
-
     trendingDiv.innerHTML = ' ';
+
     // linea previa borra el contenido de la etiqueta antes de ejecurar la funcion para no tener contenido repetido.
     movies.forEach(movie => {
         trendingDiv.classList.add('home__div__silder_trendingPreview');
         const articleTrendingConteiner = document.createElement('article');
         articleTrendingConteiner.classList.add('home__article__silder_trendingPreview')
-        articleTrendingConteiner.addEventListener('click', () => {
-            location.hash = `#movie=${movie.id}`
-        })
         const trendingImg = document.createElement('img');
-
         trendingImg.classList.add('.img_slider');
         trendingImg.setAttribute('alt', 'movie.title');
         trendingImg.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
 
         trendingImg.addEventListener('error', () => {
             trendingImg.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg');
-
-            // trendingImg.setAttribute('style', 'widht: 100px; heigth: 300px');
         });// seteo imagen defoult
+
+        trendingImg.addEventListener('click', () => {
+            location.hash = `#movie=${movie.id}`
+        })
+
+
+        const favoriteBtn = document.createElement('button');
+        favoriteBtn.classList.add('favorite-button-add');
+        likedMovieList()[movie.id] && favoriteBtn.classList.add('is-favorite');
+
+        favoriteBtn.addEventListener('click', () => {
+            favoriteBtn.classList.toggle('is-favorite')
+            likedMovies(movie);
+            getFavoritesMovies();
+        })
 
         lazyloader.observe(trendingImg);
         // inyeccion de etiquetas
-        articleTrendingConteiner.appendChild(trendingImg)
+        articleTrendingConteiner.appendChild(favoriteBtn);
+        articleTrendingConteiner.appendChild(trendingImg);
         trendingDiv.appendChild(articleTrendingConteiner);
+        homeMAIN.appendChild(trendingDiv);
+
     });
+
+
 }
 // ===================================================== CATEGORIES SHOW =====================================<<<
 async function getCategories() {
@@ -154,18 +192,26 @@ async function getMovieDetail() {
     const movieDescription = document.createElement('p');
     movieDescription.innerText = `${data.overview}`
 
+    const favoriteBtn = document.createElement('button');
+    favoriteBtn.classList.add('favorite-button-add');
+    likedMovieList()[data.id] && favoriteBtn.classList.add('is-favorite');
+    favoriteBtn.addEventListener('click', () => {
+        favoriteBtn.classList.toggle('is-favorite');
+        likedMovies(data)
+    })
     // carga en lazy loader
     lazyloader.observe(movieDetailIMG)
     // inyeccion de etiquetas
     movieDetailMAIN.appendChild(movieDetailFirstDiv)
     movieDetailFirstDiv.appendChild(movieDetailIMG);
     movieDetailFirstDiv.appendChild(movieDetailSecondDiv);
+    movieDetailFirstDiv.appendChild(favoriteBtn);
     movieDetailSecondDiv.appendChild(movieTitle);
     movieDetailSecondDiv.appendChild(movieInfo);
     movieDetailFirstDiv.appendChild(movieDescription);
 
 
-    // Relationed movies to movieDetail ---> 
+    //--------------------- Relationed movies to movieDetail -----------------------------------------> 
     async function getRelationedMovies() {
         relationedSectionConteiner.innerHTML = '';
         relationedDivPrincipal.innerHTML = '';
@@ -174,10 +220,7 @@ async function getMovieDetail() {
         console.log(movies);
 
         movies.forEach((movie) => {
-            const relationedMovieArticle = document.createElement('article');
-            relationedMovieArticle.addEventListener('click', () => {
-                location.hash = `#movie=${movie.id}`
-            }) // agrego navegacion por hash al tocar el contenedor de la imagen
+            const relationedMovieArticle = document.createElement('article'); // agrego navegacion por hash al tocar el contenedor de la imagen
             const relationedMovieIMG = document.createElement('img');;
             relationedMovieIMG.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
 
@@ -185,10 +228,20 @@ async function getMovieDetail() {
                 relationedMovieIMG.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg')
                 relationedMovieIMG.setAttribute('style', 'widht: 100px; heigth: 400px')
             });
-
-
+            relationedMovieIMG.addEventListener('click', () => {
+                location.hash = `#movie=${movie.id}`
+            });
             const relationedMovieTitle = document.createElement('h4');
             relationedMovieTitle.innerText = `${movie.title}`;
+
+            const favoriteBtn = document.createElement('button');
+            favoriteBtn.classList.add('favorite-button-add');
+            likedMovieList()[movie.id] && favoriteBtn.classList.add('is-favorite');
+            favoriteBtn.addEventListener('click', () => {
+                favoriteBtn.classList.toggle('is-favorite');
+                likedMovies(movie);
+            })
+
             // carga en el lazy loader
             lazyloader.observe(relationedMovieIMG);
 
@@ -196,6 +249,7 @@ async function getMovieDetail() {
             relationedSectionConteiner.appendChild(relationedDivPrincipal)
             relationedDivPrincipal.appendChild(relationedMovieArticle);
             relationedMovieArticle.appendChild(relationedMovieIMG);
+            relationedMovieArticle.appendChild(favoriteBtn);
             relationedMovieArticle.appendChild(relationedMovieTitle);
         })
 
@@ -203,18 +257,19 @@ async function getMovieDetail() {
 
     }; const relationedMovieH2 = document.createElement('h2');
     relationedMovieH2.innerHTML = ` Movie relacionated whit "${data.title} "`;
-    movieDetailMAIN.appendChild(relationedMovieH2)
+    movieDetailMAIN.appendChild(relationedMovieH2);
     getRelationedMovies();
 };
 
 
-//====================================================== SEARCH RESULT =========<<<
+//====================================================== SEARCH RESULT ========================================<<<
 async function getSearchResults(params) {
     let serchResultsArray;
     const query = location.hash;
     const containerPrincipalDiv = document.querySelector('.principal__Div_container');
 
     // si vienen parametros, es porque la funcion getNewPageApi esta pidiendo mas peliculas, por eso no borro el contendor princial, para que permanezca lo anterior y dar infinite scroling
+
 
     if (query.includes('category') && params == null) {
         const { data } = await api('discover/movie')
@@ -239,6 +294,7 @@ async function getSearchResults(params) {
         serchResultsArray = params;
     }
     else {
+        containerPrincipalDiv.innerHTML = ''; //limpio el contenedor solo en caso de primera iteracion.
         const keyWordArray = query.split('=');
         const keyWordToSearch = keyWordArray.pop();
         const { data } = await api('search/movie', {
@@ -250,32 +306,41 @@ async function getSearchResults(params) {
         const serchResults = data.results;
         console.log('lo que trae es');
         serchResultsArray = Object.entries(serchResults);
-        containerPrincipalDiv.innerHTML = ''; //limpio el contenedor solo en caso de primera iteracion.
+        console.log(serchResultsArray)
     };
     serchResultsArray.forEach(movie => {
 
         const articleMovie = document.createElement('article');
         articleMovie.classList.add('particular__movie_article');
-        articleMovie.addEventListener('click', () => {
-            location.hash = `#movie=${movie[1].id}`
-        })
         const imgMovie = document.createElement('img');
         imgMovie.classList.add('particular__movie_article');
         imgMovie.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie[1].poster_path}`);
-        imgMovie.setAttribute('alt', `Poster de la pelicual ${movie[1].title}`);
-
+        // guardo la imagen en una propiedad que creo al efecto - data-img y despues la uso en el lazyloader
+        imgMovie.setAttribute('alt', `Poster de la pelicual ${movie[1].title}`)
         imgMovie.addEventListener('error', () => {
-            imgMovie.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg');
+            imgMovie.setAttribute('src', 'https://st3.depositphotos.com/1064045/18818/i/1600/depositphotos_188188474-stock-photo-unusual-cinema-concept-3d-illustration.jpg');// pongo una imagen por defecto por si viene rota.
             imgMovie.setAttribute('style', 'widht: 100px; heigth: 400px')
         });
-
+        imgMovie.addEventListener('click', () => {
+            location.hash = `#movie=${movie[1].id}`
+        })// navegacion al movie detail.
         const titleMovie = document.createElement('h5')
         titleMovie.innerText = `${movie[1].title}`
+        const favoriteBtn = document.createElement('button');
+        favoriteBtn.classList.add('favorite-button-add');
+        likedMovieList()[movie[1].id] && favoriteBtn.classList.add('is-favorite');
+        favoriteBtn.addEventListener('click', () => {
+            favoriteBtn.classList.toggle('is-favorite');
+            likedMovies(movie = { ...movie[1] });
+        })
+
         // 
         lazyloader.observe(imgMovie);
 
         // inyeccion de etiquetas
         articleMovie.appendChild(imgMovie);
+        articleMovie.appendChild(imgMovie);
+        articleMovie.appendChild(favoriteBtn);
         articleMovie.appendChild(titleMovie);
         containerPrincipalDiv.appendChild(articleMovie);
         containerPrincipalDiv.classList.remove('noImg')
@@ -283,6 +348,45 @@ async function getSearchResults(params) {
     });
 };
 
+function getFavoritesMovies() {
+    const movies = Object.values(likedMovieList());
+    const conteinerPrincipalDivFavorites = document.querySelector('.favorite_principal__Div_container');
+    conteinerPrincipalDivFavorites.innerHTML = '';
+    conteinerPrincipalDivFavorites.classList.remove('noImg')
+    movies.forEach(movie => {
+        const favoritededMovieArticle = document.createElement('article'); // agrego navegacion por hash al tocar el contenedor de la imagen
+        const favoritedMovieIMG = document.createElement('img');;
+        favoritedMovieIMG.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
+        favoritedMovieIMG.addEventListener('click', () => {
+            location.hash = `#movie=${movie.id}`
+        });
+        const favoritedMovieTitle = document.createElement('h4');
+        favoritedMovieTitle.innerText = `${movie.title}`;
+
+        const favoriteBtn = document.createElement('button');
+        if (likedMovieList()[movie.id]) {
+            favoriteBtn.classList.add('is-favorite')
+        } else {
+
+            favoriteBtn.classList.add('favorite-button-add');
+        }
+        favoriteBtn.addEventListener('click', () => {
+            favoriteBtn.classList.toggle('favorite-button-add');
+            likedMovies(movie);
+            getFavoritesMovies();
+        });
+
+        // carga en el lazy loader
+        lazyloader.observe(favoritedMovieIMG);
+
+        //Inyeccion
+
+        conteinerPrincipalDivFavorites.appendChild(favoritededMovieArticle);
+        favoritededMovieArticle.appendChild(favoritedMovieIMG);
+        favoritededMovieArticle.appendChild(favoriteBtn);
+        favoritededMovieArticle.appendChild(favoritedMovieTitle);
+    });
+}
 
 // =====================================================  TOP RATED CARROUSEL ==========<<<
 // async function getTopRatedMovies() {
@@ -303,6 +407,5 @@ async function getSearchResults(params) {
 // };
 
 //==i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i==i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=
-getTrendintMovies();
-// lazyloader();
-// getTopRatedMovies();
+
+

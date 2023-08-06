@@ -2,6 +2,7 @@
     --primary-color: rgb(45, 45, 202);
     --color-segundario: antiquewhite;
     --color-terciario: rgb(255, 128, 0);
+    --color-cuarto: rgb(217, 171, 180);
     --header-size: 4rem;
     --font: 1.8rem;
     --font-family: 'Lato', sans-serif;
@@ -187,9 +188,10 @@ h1 {
     /* min-width: 100px; */
     /* margin-left: 2%; */
     /* margin: 1%; */
+    position: relative;
     max-height: 400px;
     scroll-snap-type: x mandatory;
-    animation: slider 90s alternate infinite linear;
+    animation: slider 150s alternate infinite linear;
     transition: all 20s ease;
 
 }
@@ -251,6 +253,8 @@ h1 {
     background-color: #32cd32d4;
 }
 
+
+
 /* Vista HOME */
 
 main {
@@ -286,14 +290,76 @@ main {
     display: inline-block;
     width: fit-content;
     border-radius: 18px;
+    margin-top: 0%;
+    position: relative;
 
 }
+
+.favorite-button-add {
+    /* favorite btn */
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--color-terciario);
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1;
+}
+
+.is-favorite {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--color-segundario);
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1;
+}
+
 
 .particular__movie_img {
     border: 1px solid green;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.7);
     max-width: 300px;
     max-height: 400px;
+}
+
+.favorite-button-add {
+    /* favorite btn */
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--color-terciario);
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.7);
+}
+
+
+.favorite-button-add::before {
+    content: '🤍';
+}
+
+.is-favorite {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: white;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.7);
+}
+
+.is-favorite::before {
+    content: '🧡';
 }
 
 /*========================== MOVIE DETAL = Relationed movies ========================*/
@@ -310,7 +376,31 @@ main {
     padding: 2% 0% 0.5% 0%;
     box-sizing: border-box;
     width: 100%;
+    position: relative;
 
+}
+
+.movieDetail__content_selectedMovie .favorite-button-add {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: var(--color-terciario);
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 2;
+}
+
+.movieDetail__content_selectedMovie .is-favorite {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--color-segundario);
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1;
 }
 
 .movieDetail__content_selectedMovie img {
@@ -329,28 +419,51 @@ main {
     padding: 4%;
 }
 
-/* RELATIONED MOVIES  */
+/* RELATIONED MOVIES  & favorites area in HOME VIEW*/
 
-.movieDetail__content_relationedMovies {
+.movieDetail__content_relationedMovies,
+.favorite_principal__Div_container {
 
     /* padding: auto; */
     padding: 5%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: revert;
     /* margin: 2% 15% 2% 15%; */
 
 }
 
-.movieDetail__content_relationedMovies article {
+.movieDetail__content_relationedMovies article,
+.favorite_principal__Div_container article {
     max-width: 300px;
     max-height: 400px;
-    /* a vEEEEERRRR SI Se Rom pe la matriskbnsjkbhsjl*/
+    max-width: inherit;
+    /* padding: -10% 5%; */
+    margin-top: 25%;
+    position: relative;
 }
 
-.movieDetail__content_relationedMovies img {
-    margin: 1%;
-    max-width: 300px;
+/* 
+.favorite_principal__Div_container article {
+    max-width: 310px;
+    padding: -10% 5%;
+} */
+
+;
+
+.movieDetail__content_relationedMovies img,
+.favorite_principal__Div_container article img {
+    /* margin: 1%; */
+    max-width: 90%;
     max-height: 400px;
     overflow: hidden;
+    max-width: 200px !important;
+}
+
+.favorite_principal__Div_container article img {
+
+    border-radius: 20px;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=FOOOTERRRRR */
@@ -361,7 +474,7 @@ footer {
     background-color: grey;
 }
 
-/* ********************************* MEDIA QUERYS ***************************************/
+/* ********************************* MEDIA QUERYS ****************************************************************/
 /* small */
 @media (min-width:480px) {
 
@@ -416,14 +529,18 @@ footer {
         margin: auto;
         padding: 1%;
         max-width: 230px;
+        margin-top: 0%;
 
     }
 
     .particular__movie_img {
         overflow: hidden;
-        /* aca puede que haya tocado algo  =-=-=-=-=-=-=-=--=-=-=-=<<<<<<<<<<<<<<*/
         box-shadow: 0 0 10px rgb(0, 0, 0, 0.7);
     }
+
+
+
+
 
     /* =========  MOVIE DETAIL VIEW == RELATIONED MOVIE  ================*/
     .main__content__MovieDetail {
@@ -488,47 +605,56 @@ footer {
 
     }
 
-    /*=========== MOVIE DETIAL = Relationed movies ============*/
+    /*===========  Relationed movies ============*/
     .movieDetail__content_relationedMoviesArea {
-        width: 100vw;
         align-items: center;
         width: 100%;
-        max-height: 400px;
+        /* max-height: 400px; */
 
         /* margin-left: unset; */
         /*si lo saco, queda bueno tambien */
     }
 
 
-    .movieDetail__content_relationedMovies {
+    .movieDetail__content_relationedMovies,
+    .favorite_principal__Div_container {
         margin: 2% 0% 2% 0%;
-        width: 100%;
+        width: 90%;
+        height: 500px;
         display: flex;
         flex-direction: row;
-        /* max-height: 400px; */
         overflow-x: scroll;
         box-sizing: content-box !important;
         /* scroll-snap-type: x mandatory; */
         margin-left: initial;
         overflow: scroll;
-        max-height: fit-content;
-        background-color: rgb(218, 162, 173);
+        background: linear-gradient(50deg, rgb(217, 171, 180), rgb(188, 46, 188));
+        border-radius: 5px;
     }
 
     .movieDetail__content_relationedMovies article {
-
+        height: 485px;
         padding: 2%;
-        display: flex;
-        flex-direction: column;
+        margin-top: 1px !important;
 
     }
 
-    .movieDetail__content_relationedMovies img {
+
+    .favorite_principal__Div_container article {
+        margin-right: 5%;
+        margin-top: 1px !important;
+        height: 485px;
+    }
+
+
+    .movieDetail__content_relationedMovies img,
+    .favorite_principal__Div_container img {
 
         border-radius: 10px;
         /* object-fit: cover; */
         scroll-snap-align: center;
-
+        max-width: 300px;
+        max-height: fit-content;
     }
 
 
@@ -569,10 +695,6 @@ footer {
 
     }
 
-    .movieDetail__content_relationedMovies {
-        background: linear-gradient(50deg, rgb(217, 171, 180), rgb(188, 46, 188));
-        border-radius: 5px;
-    }
 
     /* extraLarge */
     @media (min-width:1024px) {}

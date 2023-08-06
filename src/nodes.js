@@ -1,12 +1,14 @@
+// los conteiner_principal_Div son llamados desde aqui, pero a la hora de hacerlos visibles en el archivo navegation, les imprimo la clase principa_Div_container a los fines de aplicarle las mismas caracteristicas.
+
 //HEADER
 
 const menuDesplegableUl = document.querySelector('.header__desplegable-options')
 
-// MAINS PRINCIPALES
 
-//TRENDINGS AREA PREVIEW
+// HOME -- TRENDINGS AREA PREVIEW
 const homeMAIN = document.querySelector('.main__content__Home');
 const showMoreTRENDINGSbtn = document.getElementById('showMore-Trendin-Btn');
+const conteinerPrincipalDivFavorites = document.querySelector('.favorite_principal__Div_container')
 //TRENDINGS ONLY AREA -
 const mainTrendsView = document.querySelector('.main__content__Trending')
 const containerPrincipalDivTrending = document.querySelector('.trending_principal__Div_container');

@@ -46,6 +46,7 @@ function trendsPage() {
     containerPrincipalDivTrending.classList.add('principal__Div_container')// esta clase es la que debo usar en CADA DIV de cada Seccion, pero SOLO al momento de mostrar la vista.
     serchResultsMAIN.classList.add('invisible');
     homeMAIN.classList.add('invisible');
+    conteinerPrincipalDivFavorites.classList.add('invisible')
     movieDetailMAIN.classList.add('invisible');
     relationedSectionConteiner.classList.add('invisible')
     categoryMain.classList.add('invisible')
@@ -58,6 +59,7 @@ function searchPage() {
     serchResultsMAIN.classList.remove('invisible');
     containerPrincipalDivSearch.classList.add('principal__Div_container')
     homeMAIN.classList.add('invisible');
+    conteinerPrincipalDivFavorites.classList.add('invisible')
     movieDetailMAIN.classList.add('invisible');
     relationedSectionConteiner.classList.add('invisible')
     mainTrendsView.classList.add('invisible');
@@ -69,6 +71,7 @@ function movieDetail() {
 
     console.log('Estas en el detalle de tu pelicula');
     homeMAIN.classList.add('invisible');
+    conteinerPrincipalDivFavorites.classList.add('invisible')
     serchResultsMAIN.classList.add('invisible');
     movieDetailMAIN.classList.remove('invisible');
     relationedSectionConteiner.classList.remove('invisible');
@@ -87,6 +90,7 @@ function moviesByCategoryPage() {
     serchResultsMAIN.classList.remove('invisible');
     containerPrincipalDivCategory.classList.add('principal__Div_container')
     homeMAIN.classList.add('invisible');
+    conteinerPrincipalDivFavorites.classList.add('invisible')
     movieDetailMAIN.classList.add('invisible');
 
     relationedSectionConteiner.classList.add('invisible')
@@ -99,10 +103,15 @@ function moviesByCategoryPage() {
 function homePage() {
     console.log('estas en el home');
     homeMAIN.classList.remove('invisible');
+    conteinerPrincipalDivFavorites.classList.remove('invisible')
     movieDetailMAIN.classList.add('invisible');
     serchResultsMAIN.classList.add('invisible');
     relationedSectionConteiner.classList.add('invisible')
     categoryMain.classList.add('invisible')
     mainTrendsView.classList.add('invisible');
     goToHomeBTN.classList.add('invisible');
+
+    getTrendintMovies();
+    getFavoritesMovies();
+
 }
