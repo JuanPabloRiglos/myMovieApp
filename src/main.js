@@ -1,3 +1,4 @@
+//seteo de base Api general
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
@@ -5,9 +6,10 @@ const api = axios.create({
     },
     params: {
         'api_key': API_KEY,
+        'language': localStorage.getItem('language') ? localStorage.getItem('language') : navigator.language,
     },
 });
-
+//lista de pliculas likeadas
 function likedMovieList() {
     const item = JSON.parse(localStorage.getItem('liked-movies'));
     let movies;
@@ -387,26 +389,32 @@ function getFavoritesMovies() {
         favoritededMovieArticle.appendChild(favoriteBtn);
         favoritededMovieArticle.appendChild(favoritedMovieTitle);
     });
-}
+};
+const suppourtLEngues = { 'es-AR': 'https://img.icons8.com/fluency/48/argentina-circular.png', 'en-US': 'https://img.icons8.com/fluency/48/usa-circular.png', 'pt-BR': 'https://img.icons8.com/fluency/48/brazil-circular.png' };
 
-// =====================================================  TOP RATED CARROUSEL ==========<<<
-// async function getTopRatedMovies() {
-//     const { data } = await api('movie/top_rated');
-//     const movies = data.results;
-//     const topRatedDiv = document.getElementById('main-conteiner-a');
 
-//     movies.forEach(movie => {
-//         const topRatedIMG = document.createElement('img');
-//         topRatedIMG.addEventListener('click', () => {
-//             location.hash = `#movie=${movie.id}`
-//         })
-//         topRatedIMG.setAttribute('alt', `${movie.title}`);
-//         topRatedIMG.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`)
-//         // inyeccion de etiquetas
-//         topRatedDiv.appendChild(topRatedIMG);
-//     });
-// };
+function showLenguage() {
+    const lenguages = Object.entries(suppourtLEngues);
+    console.log(lenguages);
+    const body = document.querySelector('body')
+    const lenguageConteiner = document.createElement('div');
+    lenguageConteiner.classList.add('content__lenguage_Div');
+    lenguages.forEach(lang => {
+        const flagImg = document.createElement('img');
+        flagImg.setAttribute('src', `${lang[1]}`);
+        flagImg.setAttribute('alt', `Bandera del pasi con el idioma elegido`);
+        flagImg.setAttribute('style', 'widht: 48px; heigth: 48px');
+        flagImg.addEventListener('click', () => {
+            console.log(lang[0])
+            localStorage.setItem('language', `${lang[0]}`)
+            location.reload();
+        })
+        lenguageConteiner.appendChild(flagImg);
+        body.appendChild(lenguageConteiner)
+    })
+};
+
 
 //==i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i==i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=i=
 
-
+// <a target="_blank" href="https://icons8.com/icon/fIgZUHgwc76e/usa">Usa</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
