@@ -30,13 +30,19 @@ header {
     display: flex;
     align-items: flex-start;
     width: 90%;
-    max-height: 17vh;
+    max-height: 20vh;
     background-color: var(--color-terciario);
     justify-content: flex-end;
     flex-direction: column-reverse;
     margin: 2% 5% 2% 5%;
     border-radius: 9px;
     padding: 20px;
+}
+
+header {
+    -webkit-box-shadow: 6px 13px 300px 22px rgba(0, 0, 0, 0.87);
+    -moz-box-shadow: 6px 13px 300px 22px rgba(0, 0, 0, 0.87);
+    box-shadow: 6px 13px 300px 22px rgba(0, 0, 0, 0.87);
 }
 
 /* Go home button -- envicible en HOME*/
@@ -144,7 +150,7 @@ h1 {
     font-size: 3rem;
     font-weight: 300;
     justify-content: center;
-    margin: 0 auto auto 10%;
+    margin: 20px auto auto 10%;
     font-weight: bolder;
 
 }
@@ -493,16 +499,10 @@ footer a {
 @media (min-width:480px) {
 
     header {
-        display: flex;
-        align-items: flex-start;
-        width: 90%;
-        max-height: 17vh;
-        background-color: var(--color-terciario);
-        justify-content: flex-end;
-        flex-direction: column-reverse;
-        margin: 2% 5% 2% 5%;
-        border-radius: 9px;
-        padding: 20px;
+
+        height: 250px;
+        background-color: #6b438b;
+
     }
 
     /* boton de categorias  */
@@ -677,16 +677,10 @@ footer a {
 /* large */
 @media (min-width:750px) {
     header {
-        display: flex;
-        align-items: flex-start;
-        width: 90%;
-        min-height: 20vh;
-        background-color: var(--color-segundario);
-        justify-content: flex-end;
-        flex-direction: column-reverse;
-        margin: 2% 5% 2% 5%;
-        border-radius: 9px;
-        padding: 20px;
+
+        min-height: 22vh;
+        background-color: #6b438b;
+
     }
 
     #go-home-btn {

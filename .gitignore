@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 #ApiKEY para ocultar en github
-src/secrets.js
+# src/secrets.js
