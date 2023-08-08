@@ -114,5 +114,5 @@ function homePage() {
 
     getTrendintMovies();
     getFavoritesMovies();
-
+    showLenguage();
 }
